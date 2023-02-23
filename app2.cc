@@ -697,7 +697,7 @@ int main(int argc, char**argv){
     RooArgList list("list");
     list.add(*rep);
     sprintf(formula,"%s","@0");
-    RooFormulaVar* fcn = new RooFormulaVar("fit","fit",formula,list);
+    auto fcn = new RooFormulaVar("fit","fit",formula,list);
 
     cout<<2<<endl;
     rep->getParVar(0)->setConstant(false);
@@ -752,7 +752,7 @@ int main(int argc, char**argv){
     }
 
     else{
-      RooMinuit m(*fcn);
+      RooMinimizer m(*fcn);
       m.setStrategy(2);
       Double_t callsEDM[2] = {10500., 1.e-6};
       Int_t irf = 0;
